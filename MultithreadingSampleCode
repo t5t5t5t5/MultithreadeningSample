@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace MultiThreadProgram
+{
+    class Program
+    {
+        static void ThreadCalc1()
+        {
+            int tmp = 0;
+            for(int i = 0; i < 5; i++)
+            {
+                tmp = i + 1;
+                Console.WriteLine("Thread1: " + tmp + "/5");
+            }
+        }
+        static void ThreadCalc2()
+        {
+            int product = 55555555;
+            for(int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Thread2: " + product * i);
+            }
+        }
+        static void ThreadCalc3()
+        {
+            Console.WriteLine("Thread3: " + 20000000 * 5);
+            Console.WriteLine("Thread3: " + 20000000 * 5);
+            Console.WriteLine("Thread3: " + 20000000 * 5);
+            Console.WriteLine("Thread3: " + 20000000 * 5);
+            Console.WriteLine("Thread3: " + 20000000 * 5);
+            Console.WriteLine("Thread3: " + 20000000 * 5);
+            Console.WriteLine("Thread3: " + 20000000 * 5);
+            Console.WriteLine("Thread3: " + 20000000 * 5);
+            Console.WriteLine("Thread3: " + 20000000 * 5);
+            Console.WriteLine("Thread3: " + 20000000 * 5);
+            Console.WriteLine("Thread3: " + 20000000 * 5);
+        }
+        static void ThreadCalc4()
+        {
+            Console.WriteLine("Thread4: " + 30000000 * 5);
+            Console.WriteLine("Thread4: " + 30000000 * 5);
+            Console.WriteLine("Thread4: " + 30000000 * 5);
+            Console.WriteLine("Thread4: " + 30000000 * 5);
+            Console.WriteLine("Thread4: " + 30000000 * 5);
+            Console.WriteLine("Thread4: " + 30000000 * 5);
+            Console.WriteLine("Thread4: " + 30000000 * 5);
+            Console.WriteLine("Thread4: " + 30000000 * 5);
+            Console.WriteLine("Thread4: " + 30000000 * 5);
+        }
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Before Starting Threads");
+            //Creating threads
+            Thread thread1 = new Thread(new ThreadStart(ThreadCalc1));
+            Thread thread2 = new Thread(new ThreadStart(ThreadCalc2));
+            Thread thread3 = new Thread(new ThreadStart(ThreadCalc3));
+            Thread thread4 = new Thread(new ThreadStart(ThreadCalc4));
+            //call child Thread
+
+            Console.WriteLine("---Start Thread 1---");
+            thread1.Start();
+            Console.WriteLine("---Start Thread 2---");
+            thread2.Start();
+            Console.WriteLine("---Start Thread 3---");
+            thread3.Start();
+            Console.WriteLine("---Start Thread 4---");
+            thread4.Start();
+
+            Console.ReadKey();
+        }
+    }
+}
